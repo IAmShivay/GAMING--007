@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    @apply antialiased text-white bg-black cursor-none;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-purple-900/20;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-purple-500/50 rounded-full hover:bg-purple-500/70 transition-colors;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/25;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20;
+  }
+
+  .custom-cursor {
+    @apply fixed w-8 h-8 pointer-events-none z-50 rounded-full mix-blend-difference;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(30, 64, 175, 0.3) 100%);
+    transform: translate(-50%, -50%);
+  }
+
+  .custom-cursor-trailer {
+    @apply fixed w-16 h-16 pointer-events-none z-40 rounded-full;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(30, 64, 175, 0.1) 100%);
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out;
+  }
+}
+
+@layer utilities {
+  .animate-gradient-x {
+    animation: gradient-x 15s linear infinite;
+  }
+
+  .animate-aurora {
+    animation: aurora 20s linear infinite;
+  }
+
+  .animate-rgb-border {
+    animation: rgb-border 2s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes aurora {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(0);
+    }
+    25% {
+      transform: translate3d(20%, 0, 0) rotate(2deg);
+    }
+    50% {
+      transform: translate3d(0, 0, 0) rotate(0);
+    }
+    75% {
+      transform: translate3d(-20%, 0, 0) rotate(-2deg);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0);
+    }
+  }
+
+  @keyframes rgb-border {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 400% 50%;
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
